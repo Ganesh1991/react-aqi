@@ -8,7 +8,7 @@ const Chk = React.lazy(() => import("./checkbox"));
 const Button = ({ handleChange, name }) => {
   return (
     <button key={`hisotryBtn-${name}`} onClick={() => handleChange(name)}>
-      View History
+      View Live
     </button>
   );
 };
@@ -63,7 +63,9 @@ const Grid = (props) => {
 };
 
 const GridColumn = ({ columns }) => {
-  return columns.map((c) => <th key={c.label}>{c.label}</th>);
+  return columns.map((c, index) => (
+    <th key={`col-${index}-${c.label}`}>{c.label}</th>
+  ));
 };
 
 const MemomizedGridCol = React.memo(GridColumn, propsAreEqual);

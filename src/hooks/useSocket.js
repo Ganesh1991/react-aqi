@@ -9,7 +9,7 @@ export const useSocket = (serverPath) => {
   const [stop, setStop] = useState(false);
   const [history, setHistory] = useState([]);
   const [response, setResponse] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const webSocket = useRef(null);
 
@@ -31,7 +31,7 @@ export const useSocket = (serverPath) => {
     webSocket.current.onmessage = (res) => {
       if (stop) return;
       const list = JSON.parse(res.data);
-      if (!loading) setLoading(false);
+      if (loading) setLoading(false);
       setResponse((res) => getUpdatedData(res, list));
       setHistory((h) => [...h, ...list]);
     };
@@ -63,7 +63,7 @@ const getUpdatedData = (prevState, newState) => {
       result.push({
         ...element,
         aqi: formatDecimalNumber(exists.aqi, 2),
-        updatedOn: dateFormatter(new Date()),
+        // updatedOn: dateFormatter(new Date()),
       });
     } else result.push(element);
   });

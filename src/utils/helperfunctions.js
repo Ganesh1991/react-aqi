@@ -1,19 +1,20 @@
 export const dateFormatter = (currentdate) => {
-  const datestr =
-    currentdate.getDate() +
-    "/" +
-    (currentdate.getMonth() + 1) +
-    "/" +
-    currentdate.getFullYear() +
-    " @ " +
-    currentdate.getHours() +
-    ":" +
-    currentdate.getMinutes() +
-    ":" +
-    currentdate.getSeconds();
-  const ampm = currentdate.getHours() > 12 ? "PM" : "AM";
-  return datestr + " " + ampm;
+  return currentdate.toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
 };
+
+// const getDifferenceInMinutes = (date1, date2) => {
+//   const diffInMs = Math.abs(date2 - date1);
+//   return diffInMs / (1000 * 60);
+// };
+
+// const getDifferenceInSeconds = (date1, date2) => {
+//   const diffInMs = Math.abs(date2 - date1);
+//   return diffInMs / 1000;
+// };
 
 export const propsAreEqual = (prevProps, nextProps) =>
   JSON.stringify(prevProps) === JSON.stringify(nextProps);
