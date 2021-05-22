@@ -51,9 +51,9 @@
 
 ## About The Project
 
-[![Landing Page][product-screenshot]](https://github.com/Ganesh1991/react-aqi/tree/main/images/LandingPage.png)
-[![Comparison Feature][product-screenshot]](https://github.com/Ganesh1991/react-aqi/tree/main/images/compareFeature.png)
-[![Live Tracking Feature][product-screenshot]](https://github.com/Ganesh1991/react-aqi/tree/main/images/livetracking.png)
+![Landing Page](images/LandingPage.png "App Landing Page")
+![Comparison Feature](images/compareFeature.png "City wise AQI Comparison feature Page")
+![Live Tracking Feature](images/livetracking.png "Live city AQI tracking")
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
