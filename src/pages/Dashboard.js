@@ -3,7 +3,7 @@ import Chart from "../components/chart";
 import Grid from "../components/grid";
 import { useSocket } from "../hooks/useSocket";
 import { colors, gridColumnProps, SOCKET_ENDPOINT } from "../utils/constants";
-import CompareDialog from "./CustomCompare";
+import CompareDialog from "./CompareDialog";
 
 const Dashboard = () => {
   const { response, loading, history } = useSocket(SOCKET_ENDPOINT);
