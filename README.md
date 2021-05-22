@@ -84,6 +84,7 @@ Used below third party library for showing live chart information
 4. User can select different cities to compare the AQI information in realtime
 5. Also user can view city wise live chart of AQI information
 6. Used React.memo within components to avoid renders as data is getting updated in realtime.
+7. I have completed the assignment in 8 hrs
 
 <!-- LICENSE -->
 
