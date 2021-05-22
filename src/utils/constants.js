@@ -4,6 +4,18 @@ export const gridDefaultColumns = ["CITY", "AQI", "LAST UPDATED"];
 
 export const gridColumnProps = [
   {
+    label: "",
+    key: "isChecked",
+    componentType: "CheckBox",
+    compProps: {
+      name: "city",
+      handleChange: function (props) {
+        console.log(props);
+      },
+    },
+    isActionHandler: true,
+  },
+  {
     label: "CITY",
     key: "city",
     componentType: "Cell",
@@ -17,5 +29,17 @@ export const gridColumnProps = [
     label: "LAST UPDATED",
     key: "updatedOn",
     componentType: "Cell",
+  },
+  {
+    label: "",
+    key: "viewHistory",
+    componentType: "Button",
+    compProps: {
+      name: "city",
+      handleChange: function (props) {
+        console.log(props);
+      },
+    },
+    isActionHandler: true,
   },
 ];

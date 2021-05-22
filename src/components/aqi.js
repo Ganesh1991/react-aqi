@@ -30,4 +30,6 @@ const Aqi = ({ data }) => {
   return aqiComp;
 };
 
-export default Aqi;
+const MemomizedAQI = React.memo(Aqi);
+
+export default MemomizedAQI;

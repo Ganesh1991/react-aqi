@@ -7,6 +7,7 @@ import {
 
 export const useSocket = (serverPath) => {
   const [stop, setStop] = useState(false);
+  const [history, setHistory] = useState([]);
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -32,6 +33,7 @@ export const useSocket = (serverPath) => {
       const list = JSON.parse(res.data);
       if (!loading) setLoading(false);
       setResponse((res) => getUpdatedData(res, list));
+      setHistory((h) => [...h, ...list]);
     };
   }, [stop, loading]);
 
@@ -39,6 +41,7 @@ export const useSocket = (serverPath) => {
     loading,
     response,
     setStop,
+    history,
   };
 };
 
