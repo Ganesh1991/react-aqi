@@ -3,11 +3,22 @@ import { propsAreEqual } from "../utils/helperfunctions";
 
 const Cell = React.lazy(() => import("./cell"));
 const AQI = React.lazy(() => import("./aqi"));
+const Chk = React.lazy(() => import("./checkbox"));
+
+const Button = ({ handleChange, name }) => {
+  return (
+    <button key={`hisotryBtn-${name}`} onClick={() => handleChange(name)}>
+      View History
+    </button>
+  );
+};
 
 const Grid = (props) => {
   const components = {
     Cell: Cell,
     Aqi: AQI,
+    CheckBox: Chk,
+    Button: Button,
   };
 
   const { columns = [], data = [], name } = props;
@@ -22,13 +33,23 @@ const Grid = (props) => {
       <tbody>
         {data.map((row, index) => {
           return (
-            <tr key={`${JSON.stringify(row)}-${index}`}>
+            <tr>
               {columns.map((col, index) => {
                 const Comp = components[col.componentType];
+                const otherProps = {};
+                if (col.isActionHandler) {
+                  otherProps.name = row[col.compProps.name];
+                  otherProps.isChecked = row[col.key];
+                  otherProps.handleChange =
+                    props.actionHandlers[col.componentType];
+                }
                 return (
-                  <td key={`${col.key}-${row[col.key]}`}>
+                  <td
+                    key={`${col.key}-${row[col.key]}-col-${index}-td-${index}`}
+                  >
                     <Suspense fallback={null}>
-                      <Comp data={row[col.key]} />
+                      {!col.isActionHandler && <Comp data={row[col.key]} />}
+                      {col.isActionHandler && <Comp {...otherProps} />}
                     </Suspense>
                   </td>
                 );
