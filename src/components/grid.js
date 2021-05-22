@@ -33,7 +33,7 @@ const Grid = (props) => {
       <tbody>
         {data.map((row, index) => {
           return (
-            <tr>
+            <tr key={`tr-${index}`}>
               {columns.map((col, index) => {
                 const Comp = components[col.componentType];
                 const otherProps = {};

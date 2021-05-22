@@ -10,7 +10,7 @@ export const gridColumnProps = [
     compProps: {
       name: "city",
       handleChange: function (props) {
-        console.log(props);
+        // console.log(props);
       },
     },
     isActionHandler: true,
@@ -37,9 +37,18 @@ export const gridColumnProps = [
     compProps: {
       name: "city",
       handleChange: function (props) {
-        console.log(props);
+        // console.log(props);
       },
     },
     isActionHandler: true,
   },
+];
+
+export const colors = [
+  { category: "good", colorCode: "#55a84f" },
+  { category: "satisfactory", colorCode: "#a3c853" },
+  { category: "moderate", colorCode: "#fff833" },
+  { category: "poor", colorCode: "#f29c33" },
+  { category: "verypoor", colorCode: "#e93f33" },
+  { category: "severe", colorCode: "#af2d24" },
 ];

@@ -2,7 +2,6 @@ import React from "react";
 import Aqi from "../components/aqi";
 
 const CompareDialog = ({ handleDialog, gridData, selectedCity }) => {
-  console.log("gridData, selectedCity", gridData, selectedCity);
   return (
     <div id="myModal" className="modal">
       <div className="modal-content">

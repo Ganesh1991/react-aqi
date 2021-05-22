@@ -130,4 +130,10 @@ table th.sort-desc::before {
   border: 0;
   line-height: 1;
   border-radius: 3px;
+  margin-left: 10px;
+}
+
+.dot {
+  color: white;
+  padding: 8px;
 }

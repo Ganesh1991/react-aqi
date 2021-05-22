@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Chart from "../components/chart";
 import Grid from "../components/grid";
 import { useSocket } from "../hooks/useSocket";
-import { gridColumnProps, SOCKET_ENDPOINT } from "../utils/constants";
-import CompareDialog from "./customCompare";
+import { colors, gridColumnProps, SOCKET_ENDPOINT } from "../utils/constants";
+import CompareDialog from "./CustomCompare";
 
 const Dashboard = () => {
-  const { response, loading, setStop, history } = useSocket(SOCKET_ENDPOINT);
+  const { response, loading, history } = useSocket(SOCKET_ENDPOINT);
   const [open, setOpen] = useState(false);
   const [viewChart, setViewChart] = useState("");
   const [chkData, setChkData] = useState([]);
@@ -28,20 +28,20 @@ const Dashboard = () => {
 
   const handleClose = () => {
     setOpen(false);
-    setStop(false);
+    // setStop(false);
+    setChkData([]);
   };
 
   const closeChartDialog = () => setViewChart("");
 
   const displayChart = (city) => {
-    console.log(city);
     setViewChart(city);
   };
 
   const handleCompareBtnClick = () => {
     if (chkData.length >= 2) {
       setOpen(true);
-      setStop(true);
+      // setStop(true);
     } else alert("Please select 2 or more City to view compare mode");
   };
 
@@ -54,21 +54,31 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="container control-section">
-        <button className="primaryBtn" onClick={handleCompareBtnClick}>
-          Compare City AQI
-        </button>
+      <div className="container">
+        <div className="control-section">
+          {colors.map((p) => (
+            <>
+              <span className={`dot ${p.category}`}>{p.category}</span>
+              {/* <span>{p.category}</span>{" "} */}
+            </>
+          ))}
+          <button className="primaryBtn" onClick={handleCompareBtnClick}>
+            Compare City AQI
+          </button>
+        </div>
       </div>
       <div className="container">
         <div className="item">
           {loading && <div>Loading data....</div>}
           {!loading && (
-            <Grid
-              columns={gridColumnProps}
-              data={gridData}
-              name="aqiGrid"
-              actionHandlers={actionHandlers}
-            />
+            <>
+              <Grid
+                columns={gridColumnProps}
+                data={gridData}
+                name="aqiGrid"
+                actionHandlers={actionHandlers}
+              />
+            </>
           )}
         </div>
       </div>
